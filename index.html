@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OptiWebP - Image Optimizer & Converter (v1.0.0)</title>
+    <title>OptiWebP - Image Optimizer & Converter (v1.2.0)</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
@@ -14,7 +14,7 @@
     <header class="app-header">
         <div class="logo-area">
             <h1>Opti<span>WebP</span></h1>
-            <span class="version-tag">v1.0.0</span>
+            <span class="version-tag">v1.2.0</span>
         </div>
         <div class="theme-selector-container">
             <label for="theme-select">Tema UI:</label>
@@ -44,18 +44,30 @@
 
         <section id="process-section" class="process-section hidden">
             <div class="controls-card">
-                <h3>Pengaturan Kompresi</h3>
+                <h3>Pengaturan Kompresi & Dimensi</h3>
                 
-                <div class="control-group">
-                    <label for="format-select">Format Output:</label>
-                    <select id="format-select">
-                        <option value="image/webp" selected>WEBP (Direkomendasikan)</option>
-                        <option value="image/jpeg">JPEG</option>
-                        <option value="image/png">PNG</option>
-                    </select>
+                <div class="controls-grid">
+                    <div class="control-group">
+                        <label for="format-select">Format Output:</label>
+                        <select id="format-select">
+                            <option value="image/webp" selected>WEBP (Direkomendasikan)</option>
+                            <option value="image/jpeg">JPEG</option>
+                            <option value="image/png">PNG</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="resize-select">Ukuran Dimensi Gambar:</label>
+                        <select id="resize-select">
+                            <option value="1" selected>Asli (100%)</option>
+                            <option value="0.75">Sedang (75%)</option>
+                            <option value="0.5">Kecil (50%)</option>
+                            <option value="0.25">Sangat Kecil (25%)</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="control-group">
+                <div class="control-group slider-group">
                     <div class="slider-header">
                         <label for="quality-slider">Kualitas Gambar:</label>
                         <span id="quality-val">80%</span>
@@ -64,34 +76,48 @@
                 </div>
             </div>
 
+            <div class="comparison-card">
+                <div class="card-header">Perbandingan Visual Live (Geser Slider di Tengah) <span class="new-badge">Baru</span></div>
+                <div class="slider-container">
+                    <div class="image-slider-wrapper">
+                        <img id="slider-original" src="" alt="Sebelum">
+                        <span class="slider-label label-before">Sebelum</span>
+                        
+                        <div id="slider-resize-layer" class="slider-resize-layer">
+                            <img id="slider-optimized" src="" alt="Sesudah">
+                            <span class="slider-label label-after">Sesudah</span>
+                        </div>
+                        
+                        <input type="range" id="split-slider" min="0" max="100" value="50" class="split-controller">
+                        <div id="slider-line" class="slider-line"></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="preview-grid">
                 <div class="preview-card">
-                    <div class="card-header">Gambar Asli</div>
-                    <div class="image-wrapper">
-                        <img id="original-preview" alt="Preview Asli">
-                    </div>
-                    <div class="file-info">
-                        <span>Ukuran: <strong id="original-size">0 KB</strong></span>
+                    <div class="card-header">Detail Gambar Asli</div>
+                    <div class="file-info-block">
+                        <p>Ukuran File: <strong id="original-size">0 KB</strong></p>
+                        <p>Resolusi: <span id="original-res" class="resolution-tag">0 x 0</span></p>
                     </div>
                 </div>
 
                 <div class="preview-card primary-card">
-                    <div class="card-header">Hasil Optimasi</div>
-                    <div class="image-wrapper">
-                        <img id="optimized-preview" alt="Preview Hasil">
+                    <div class="card-header">Detail Hasil Optimasi</div>
+                    <div class="file-info-block">
+                        <p>Ukuran Baru: <strong id="optimized-size">0 KB</strong></p>
+                        <p>Resolusi Baru: <span id="optimized-res" class="resolution-tag accent-res">0 x 0</span></p>
+                        <p>Efisiensi: <span id="save-percentage" class="badge-save">-0%</span></p>
                     </div>
-                    <div class="file-info">
-                        <span>Ukuran: <strong id="optimized-size">0 KB</strong></span>
-                        <span id="save-percentage" class="badge-save">-0%</span>
-                    </div>
-                    <a id="download-btn" class="download-button" download="optimized-image.webp">Unduh Gambar</a>
+                    <a id="download-btn" class="download-button" download="optimized-image.webp">Unduh Gambar Hasil</a>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="app-footer">
-        <p>&copy; 2026 OptiWebP Studio. Semua Hak Dilindungi. — <span class="footer-version">Versi Aplikasi: 1.0.0</span></p>
+        <p>&copy; 2026 OptiWebP Studio. Semua Hak Dilindungi. — <span class="footer-version">Versi Aplikasi: 1.2.0</span></p>
     </footer>
 
     <script src="script.js"></script>

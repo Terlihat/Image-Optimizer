@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OptiWebP - Image Optimizer & Converter (v1.0.0)</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo-area">
+            <h1>Opti<span>WebP</span></h1>
+            <span class="version-tag">v1.0.0</span>
+        </div>
+        <div class="theme-selector-container">
+            <label for="theme-select">Tema UI:</label>
+            <select id="theme-select" class="theme-dropdown">
+                <option value="dark" selected>Dark (Default)</option>
+                <option value="light">Light</option>
+                <option value="blue-dark">Blue Dark</option>
+                <option value="green-light">Green Light</option>
+                <option value="orange-pink-light">Orange-Pink Light</option>
+            </select>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <section class="upload-section">
+            <div id="drop-zone" class="drop-zone">
+                <div class="drop-zone-content">
+                    <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <p>Tarik & lepas gambar di sini atau <span class="browse-btn">Pilih File</span></p>
+                    <span class="file-formats">Mendukung: PNG, JPEG, WEBP, BMP</span>
+                </div>
+                <input type="file" id="file-input" accept="image/*" hidden>
+            </div>
+        </section>
+
+        <section id="process-section" class="process-section hidden">
+            <div class="controls-card">
+                <h3>Pengaturan Kompresi</h3>
+                
+                <div class="control-group">
+                    <label for="format-select">Format Output:</label>
+                    <select id="format-select">
+                        <option value="image/webp" selected>WEBP (Direkomendasikan)</option>
+                        <option value="image/jpeg">JPEG</option>
+                        <option value="image/png">PNG</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <div class="slider-header">
+                        <label for="quality-slider">Kualitas Gambar:</label>
+                        <span id="quality-val">80%</span>
+                    </div>
+                    <input type="range" id="quality-slider" min="1" max="100" value="80">
+                </div>
+            </div>
+
+            <div class="preview-grid">
+                <div class="preview-card">
+                    <div class="card-header">Gambar Asli</div>
+                    <div class="image-wrapper">
+                        <img id="original-preview" alt="Preview Asli">
+                    </div>
+                    <div class="file-info">
+                        <span>Ukuran: <strong id="original-size">0 KB</strong></span>
+                    </div>
+                </div>
+
+                <div class="preview-card primary-card">
+                    <div class="card-header">Hasil Optimasi</div>
+                    <div class="image-wrapper">
+                        <img id="optimized-preview" alt="Preview Hasil">
+                    </div>
+                    <div class="file-info">
+                        <span>Ukuran: <strong id="optimized-size">0 KB</strong></span>
+                        <span id="save-percentage" class="badge-save">-0%</span>
+                    </div>
+                    <a id="download-btn" class="download-button" download="optimized-image.webp">Unduh Gambar</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 OptiWebP Studio. Semua Hak Dilindungi. — <span class="footer-version">Versi Aplikasi: 1.0.0</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
